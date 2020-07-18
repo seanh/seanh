@@ -1,16 +1,13 @@
-### Hi there 👋
+<img src="https://github.com/seanh/seanh.github.io/raw/master/assets/images/zenek.png">
 
-<!--
-**seanh/seanh** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+# Hi 👋, I'm Sean
 
-Here are some ideas to get you started:
+I'm a developer and future Portuguese Water Dog owner currently working for [Hypothesis](https://hypothes.is/) and living in
+[Edinburgh](https://en.wikipedia.org/wiki/Edinburgh).
+You can find my blog posts and some of my projects on [my site](https://www.seanh.cc/).
+You can also find me on [GitHub Gist](https://gist.github.com/seanh/public),
+[Stack Overflow](https://stackoverflow.com/users/1175266)
+and [Pinboard](https://pinboard.in/u:seanh).
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+If you want to get in touch you can
+[send me an email](&#109;ai&#x6C;&#x74;&#x6F;:&#x68;&#x65;&#108;&#108;o&#64;&#115;&#x65;a&#110;h&#46;&#99;&#x63;).
