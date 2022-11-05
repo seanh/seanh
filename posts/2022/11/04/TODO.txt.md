@@ -6,9 +6,9 @@ Installation
 
 You can install todo.txt with [Homebrew](https://formulae.brew.sh/formula/todo-txt), [apt](https://packages.ubuntu.com/jammy/todotxt-cli), [pacman](https://aur.archlinux.org/packages/todotxt) or [make](https://github.com/todotxt/todo.txt-cli#linux), but it's just a [single-file bash script](https://github.com/todotxt/todo.txt-cli/blob/master/todo.sh) so the easiest way to install todo.txt is just to download a tarball of the [latest release](https://github.com/todotxt/todo.txt-cli/releases) and extract the `todo.sh` and `todo.cfg` files into a directory.
 
-I place both files in a `TODO.txt` folder in my [Dropbox](https://www.dropbox.com/) folder	and add that `TODO.txt` dir to my shell's `PATH` (for [fish](https://fishshell.com/) just add `fish_add_path ~/Dropbox/TODO.txt` to your `~/.config/fish/config.fish` file). This way todo.txt gets automatically "installed" on any computer that I have Dropbox installed on. Just make sure the `todo.sh` script is marked as executable (it is by default).
+I place both files in a `TODO.txt` folder in my [Dropbox](https://www.dropbox.com/) folder	and add that `TODO.txt` dir to my shell's `PATH` (for [fish](https://fishshell.com/) just add `fish_add_path ~/Dropbox/TODO.txt` to your `config.fish` file). This way todo.txt gets automatically "installed" on any computer that I have Dropbox installed on. Just make sure the `todo.sh` script is marked as executable: `chmod u+x ~/Dropbox/TODO.txt/todo.sh`.
 
-The downside of this approach is you won't automatically get upgraded if they release a new version. New versions of todo.txt are rarely released, and you can subscribe to their [GitHub releases feed](https://github.com/todotxt/todo.txt-cli/releases.atom) and manually update your `todo.sh` file if they do release one.
+The downside of this approach is you won't automatically get upgraded if they release a new version. But new versions of todo.txt are rarely released, and you can subscribe to their [GitHub releases feed](https://github.com/todotxt/todo.txt-cli/releases.atom) and manually update your `todo.sh` file if they do release one.
 
 Configuration
 -------------
@@ -33,11 +33,13 @@ export TODOTXT_PRESERVE_LINE_NUMBERS=1
 export TODOTXT_SORT_COMMAND='sort'
 ```
 
-The `export TODO_DIR=$(dirname "$0")`, which comes from the default `todo.cfg` file, sets `$TODO_DIR` to the directory containing the `todo.sh` script, i.e. the `Dropbox/TODO.txt` folder. So the four lines that follow configure `todo.sh` to look for its `todo.txt` file, `done.txt` file, `report.txt` file and `actions` folder all in the `Dropbox/TODO.txt` folder. Keeping these files in Dropbox means your todo list is continuously backed up to the cloud, synchronized between computers that you install Dropbox on, and accessible from your phone via the Dropbox app.
+The `export TODO_DIR=$(dirname "$0")`, which comes from the default `todo.cfg` file, sets `$TODO_DIR` to the directory containing the `todo.sh` script, i.e. the `Dropbox/TODO.txt` folder. So the four lines that follow configure `todo.sh` to look for its `todo.txt` file, `done.txt` file, `report.txt` file and `actions` folder all in the `Dropbox/TODO.txt` folder.
 
 `export TODOTXT_SORT_COMMAND='sort'` makes `todo.sh` print out todo list items in the same line order as they appear in the `todo.txt` file. By default it seems to print them rearranged into alphabetical order which I thought was a bit odd, especially because I like to manually arrange the tasks in the file into the order that I intend to do them in.
 
 `export TODOTXT_DEFAULT_ACTION=ls` means that just running `todo.sh` with no action will list all tasks instead of printing the help.
+
+`export TODOTXT_AUTO_ARCHIVE=0` and `export TODOTXT_PRESERVE_LINE_NUMBERS=1` prevent the `todo.sh do` and `todo.sh rm` commands from changing the line numbers of the remaining uncompleted tasks, which can be confusing and lead to mistakes.
 
 Usage
 -----
@@ -46,7 +48,7 @@ Usage
 
 Use `todo.sh add <task>` to add a task to your todo list:
 
-```terminal
+```console
 $ todo.sh add Go grocery shopping
 1 Go grocery shopping
 TODO: 1 added.
@@ -54,17 +56,29 @@ TODO: 1 added.
 
 This can also be shortened to `todo.sh a <task>`:
 
-```terminal
+```console
 $ todo.sh a Take out the trash
 2 Take out the trash
 TODO: 2 added
 ```
 
-There's also an `addm` command for adding multiple tasks at once.
+There's also an `addm` command for adding multiple tasks at once. You have to start and end the multiline argument with quotes:
+
+```console
+$ todo.sh addm "Go grocery shopping
+       Take out the trash
+       Feed the dog"
+3 Go grocery shopping
+TODO: 3 added.
+4 Take out the trash
+TODO: 4 added.
+5 Feed the dog
+TODO: 5 added.
+```
 
 You can use `-t` to prepend the creation date to a task when adding it:
 
-```terminal
+```console
 $ todo.sh -t add Feed the dog
 4 2022-11-04 Feed the dog
 TODO: 4 added.
@@ -74,9 +88,9 @@ Or put `export TODOTXT_DATE_ON_ADD=1` in your `todo.cfg` to have it always prepe
 
 ### Listing tasks
 
-Use `todo.sh list` or `todo.sh ls` to print out your todo list:
+Use `todo.sh list` or `ls` to print out your todo list:
 
-```terminal
+```console
 $ todo.sh ls
 1 Go grocery shopping
 2 Take out the trash
@@ -86,7 +100,7 @@ TODO: 2 of 2 tasks shown
 
 The `ls` command takes an optional list of filter terms that can be used to filter which tasks are printed:
 
-```terminal
+```console
 $ todo.sh ls grocery
 1 Go grocery shopping
 --
@@ -99,13 +113,13 @@ If multiple filter terms are given then only tasks that match *all* the terms ar
 
 The todo list is stored in a plain text file that you can can read or edit in any text editor. The location of the file is determined by the `TODO_FILE` setting in `todo.cfg`. The file format is simply one task per line:
 
-```terminal
+```console
 $ cat ~/Dropbox/TODO.txt/todo.txt
 Go grocery shopping
 Take out the trash
 ```
 
-Completed tasks are lines that begin with `x `. Task lines can also contain optional priorities, completed dates, creation dates, projects, contexts, and key:value tasks. The rest of this post explains what all these features are and how to use them. Here's an example task line from [the TODO.txt docs](https://github.com/todotxt/todo.txt/blob/master/README.md) showing all the features:
+Completed tasks are lines that begin with `x `. Task lines can also contain optional priorities, completed dates, creation dates, projects, contexts, and key:value tags. The rest of this post explains what all these features are and how to use them. Here's an example task line from [the TODO.txt docs](https://github.com/todotxt/todo.txt/blob/master/README.md) showing all the features:
 
     x (A) 2016-05-20 2016-04-30 measure space for +chapelShelving @chapel due:2016-05-30
 
@@ -123,23 +137,21 @@ See [todo.txt's docs](https://github.com/todotxt/todo.txt/blob/master/README.md)
 
 ### Completing and archiving tasks, and the `done.txt` file
 
-Use `todo.sh done` or `todo.sh do` to mark a task as done, using the line number to identify the task to mark:
+Use `todo.sh done` or `do` to mark a task as done, using the line number to identify the task to mark:
 
-```terminal
+```console
 $ todo.sh do 2
 2 x 2022-11-04 Take out the trash
 TODO: 2 marked as done
 ```
 
-You can give multiple space-separated numbers to complete multiple tasks at once.
+You can give multiple space-separated numbers to complete multiple tasks at once. As well as marking the task as completed by prepending a leading `x `, `todo.sh do` while also insert the completion date.
 
-A completed task is just a line in `todo.txt` the begins with `x `, optionally followed by the completion date in `YYYY-MM-DD` format.
-
-By default completing a task also archives it: moves the task from `todo.txt` into `done.txt`, which means it'll no longer show up in the output of `ls`. I don't like auto-archiving because it can change the line numbers of the remaining tasks. This can be confusing because line numbers shown in any previous `ls` output in your terminal session may no longer be correct. For example if you type another `todo.sh do <NUMBER>` command based on a line number that you can still see in the output from a previous `ls` command then you might complete the wrong task. You can disable auto-archiving with with the `-a` argument: `todo.sh do -a <NUMBER>`, or with `export TODOTXT_AUTO_ARCHIVE=0` in your `todo.cfg` file.
+By default completing a task also archives it: moves the task from `todo.txt` into `done.txt`, which means it'll no longer show up in the output of `ls`. I don't like auto-archiving because it can change the line numbers of the remaining tasks. This can be confusing because line numbers shown in any previous `ls` output in your terminal session may no longer be correct. For example if you type another `todo.sh do <NUMBER>` command based on a line number that you can still see in the output from a previous `ls` command then you might complete the wrong task. You can disable auto-archiving with with the `-a` argument: `todo.sh -a do <NUMBER>`, or with `export TODOTXT_AUTO_ARCHIVE=0` in your `todo.cfg` file.
 
 With auto-archiving disabled completed tasks will still be in `todo.txt` but just marked as done. They'll still show in the output of `todo.sh ls`:
 
-```terminal
+```console
 $ todo.sh
 1 Go grocery shopping
 2 x 2022-11-04 Take out the trash
@@ -149,7 +161,7 @@ TODO: 2 of 2 tasks shown
 
 To get rid of them you can use the `todo.sh archive` command, which moves completed tasks from `todo.txt` into `done.txt` (and does change the line numbers of the remaining tasks in `todo.txt`):
 
-```terminal
+```console
 $ todo.sh archive
 x 2022-11-04 Take out the trash
 TODO: /Users/seanh/Dropbox/TODO.txt/todo.txt archived.
@@ -167,13 +179,7 @@ The `todo.sh listall` or `lsa` command list all tasks from both `todo.txt` and `
 
 Instead of marking an item as done you can delete it with `todo.sh del` or `rm`. This will simply delete the line from your `todo.txt` file:
 
-```terminal
-$ todo.sh add Feed the cat
-2 Feed the cat
-TODO: 2 added.
-$ todo.sh add Feed the dog
-3 Feed the dog
-TODO: 3 added.
+```console
 $ todo.sh rm 2
 Delete 'Feed the cat'?  (y/n)
 y
@@ -181,7 +187,7 @@ y
 TODO: 2 deleted.
 ```
 
-By default `rm` leaves a blank line where the deleted line was, so that the line numbers of the remaining lines don't change. A subsequent `todo.sh archive` will delete any blanks lines from `todo.txt` as well as moving any done tasks into `done.txt`. If you don't want a blank line to be left behind you can pass the `-n` argument to `todo.sh rm -n <line_number>` or put `export TODOTXT_PRESERVE_LINE_NUMBERS=0` in your `todo.cfg`.
+By default `rm` leaves a blank line where the deleted line was, so that the line numbers of the remaining lines don't change. A subsequent `todo.sh archive` will delete any blanks lines from `todo.txt` as well as moving any done tasks into `done.txt`. If you don't want a blank line to be left behind you can pass the `-n` argument to `todo.sh -n rm <line_number>` or put `export TODOTXT_PRESERVE_LINE_NUMBERS=0` in your `todo.cfg`.
 
 ### Editing tasks
 
@@ -190,13 +196,13 @@ The easiest way to edit existing lines in your `todo.txt` file is just to open i
 * `todo.sh rm <line_number> <term>` removes all instances of `<term>` from the task on the given line number
 * `todo.sh prepend <line_number> <text_to_append>` prepends text to the front of a task
 * `todo.sh append <line_number> <text_to_append>` appends text to the end of a task
-* `todo.sh replace <line_number> <new_task>` completely replaces the the task on the given line number with the new text
+* `todo.sh replace <line_number> <new_task>` completely replaces the task on the given line number with the new text
 
 ### Priorities
 
 You can assign a priority to a task with `pri` or just `p`. A priority is just a parenthesised capital letter at the beginning of the line, from `A` (highest) to `Z` (lowest):
 
-```terminal
+```console
 $ todo.sh pri 3 A
 3 (A) Feed the dog
 TODO: 3 prioritized (A).
@@ -204,19 +210,19 @@ TODO: 3 prioritized (A).
 
 `ls` prints prioritised items in colour and bold. To change the priority of an item just run `pri` again with a different priority. To remove the priority from an item run `depri` or `dp`:
 
-```terminal
+```console
 $ todo.sh depri 3
 3 Feed the dog
 TODO: 3 deprioritized.
 ```
 
-`listpri` or `lsp` list all prioritised tasks only. Or `lsp A` to list only priority `A` tasks, `lsp A-C` to list priority `A`, `B` or `C` tasks. `lsp` can also take the same term arguments as `ls` does to further filter the tasks.
+`listpri` or `lsp` lists all prioritised tasks only. Or `lsp A` to list only priority `A` tasks, `lsp A-C` to list priority `A`, `B` or `C` tasks. `lsp` can also take the same term arguments as `ls` does to further filter the tasks.
 
 ### Projects and contexts
 
 You can add one or more projects (e.g. `+garage_cleaning`) and contexts (the place and situation where you'll work on a task, e.g, `@home`) to a task by just using `+<project>` or `@<context>` anywhere in the task:
 
-```terminal
+```console
 $ todo.sh add Put away tools +garage_cleaning @home
 ```
 
@@ -228,7 +234,7 @@ $ todo.sh add Put away tools +garage_cleaning @home
 
 You can have multiple todo files in your `TODO.txt` folder and use `addto` to add tasks to a file other than `todo.txt`, for example a `somedaymaybe.txt` file. You have to create the file yourself first, `todo.sh` won't create the file for you (`touch Dropbox/TODO.txt/somedaymaybe.txt`). Then:
 
-```terminal
+```console
 $ todo.sh addto somedaymaybe.txt Water the plants
 1 Water the plants
 SOMEDAYMAYBE: 1 added.
@@ -236,7 +242,7 @@ SOMEDAYMAYBE: 1 added.
 
 To list the contents of a file other than `todo.txt` use `listfile` or `lf`:
 
-```terminal
+```console
 $ todo.sh lf somedaymaybe.txt
 1 Water the plants
 --
@@ -247,8 +253,8 @@ If you run `lf` with no arguments it'll list the available files for you.
 
 You can move items between files with `move` or `mv`:
 
-```terminal
-~> todo.sh mv 2 somedaymaybe.txt
+```console
+$ todo.sh mv 2 somedaymaybe.txt
 Move 'Feed the dog' from Dropbox/TODO.txt/todo.txt to Dropbox/TODO.txt/somedaymaybe.txt? (y/n)
 y
 2 Feed the dog
@@ -257,7 +263,7 @@ TODO: 2 moved from 'Dropbox/TODO.txt/todo.txt' to 'Dropbox/TODO.txt/somedaymaybe
 
 Or pass two filename arguments to `mv` to move a task from another file back into `todo.txt` (or to move a task between two arbitrary files):
 
-```terminal
+```console
 $ todo.sh mv 2 todo.txt somedaymaybe.txt
 Move 'Feed the dog' from Dropbox/TODO.txt/somedaymaybe.txt to Dropbox/TODO.txt/todo.txt? (y/n)
 y
