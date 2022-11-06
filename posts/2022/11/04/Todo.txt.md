@@ -358,7 +358,7 @@ In addition I also add a couple of other todo.txt integrations into my fish conf
 Vim integration
 ---------------
 
-I put this in my `vimrc` file to bind <kbd>Leader</kbd> <kbd>t</kbd> to open my `todo.txt` file from within vim:
+I put this in my `vimrc` file to bind <kbd>&lt;leader&gt;</kbd> <kbd>t</kbd> to open my `todo.txt` file from within vim:
 
 ```vimrc
 nnoremap <leader>t :e ~/Dropbox/TODO.txt/todo.txt<Enter>
