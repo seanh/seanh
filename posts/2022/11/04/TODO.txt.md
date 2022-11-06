@@ -47,7 +47,7 @@ The `todo.cfg` file that you placed in your `Dropbox/TODO.txt` folder is todo.tx
 
 [The default config file](https://github.com/todotxt/todo.txt-cli/blob/master/todo.cfg) documents many of the settings that you can use in `todo.cfg` and there's also [some more listed in `todo.sh`](https://github.com/todotxt/todo.txt-cli/blob/ea32af34e6a0efef59bdf9acaa1c38d5d32bef0d/todo.sh#L141-L156).
 
-Here are the setting that I use:
+Here are the settings that I use:
 
 ```bash
 export TODO_DIR=$(dirname "$0")
