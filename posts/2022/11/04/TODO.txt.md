@@ -137,7 +137,7 @@ $ todo.sh ls grocery
 TODO: 1 of 2 tasks shown
 ```
 
-If multiple filter terms are given then only tasks that match *all* the terms are printed. You can print tasks that contain *either* `TERM1` or `TERM2` with `todo.sh TERM1\\|TERM2`. You can print tasks that *don't* contain `TERM` with `todo.sh -TERM`.
+If multiple filter terms are given then only tasks that match *all* the terms are printed. You can print tasks that contain *either* `TERM1` or `TERM2` with `ls TERM1\\|TERM2`. You can print tasks that *don't* contain `TERM` with `ls -TERM`.
 
 ### The `todo.txt` file
 
