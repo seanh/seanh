@@ -217,7 +217,7 @@ y
 TODO: 2 deleted.
 ```
 
-By default `rm` leaves a blank line where the deleted line was, so that the line numbers of the remaining lines don't change. A subsequent `todo.sh archive` will delete any blanks lines from `todo.txt` as well as moving any done tasks into `done.txt`. If you don't want a blank line to be left behind you can pass the `-n` argument to `todo.sh -n rm <line_number>` or put `export TODOTXT_PRESERVE_LINE_NUMBERS=0` in your `todo.cfg`.
+By default `rm` leaves a blank line where the deleted line was, so that the line numbers of the remaining lines don't change. A subsequent `todo.sh archive` will delete any blank lines from `todo.txt` as well as moving any done tasks into `done.txt`. If you don't want a blank line to be left behind you can pass the `-n` argument to `todo.sh -n rm <line_number>` or put `export TODOTXT_PRESERVE_LINE_NUMBERS=0` in your `todo.cfg`.
 
 ### Editing tasks
 
