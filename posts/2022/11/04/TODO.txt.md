@@ -175,7 +175,7 @@ $ todo.sh do 2
 TODO: 2 marked as done
 ```
 
-You can give multiple space-separated numbers to complete multiple tasks at once. As well as marking the task as completed by prepending a leading `x `, `todo.sh do` will also insert the completion date.
+You can give multiple space-separated numbers to complete multiple tasks at once. As well as marking the task as completed by prepending a leading `x `, `todo.sh do` will also remove any priority and insert the completion date.
 
 By default completing a task also archives it: moves the task from `todo.txt` into `done.txt`, which means it'll no longer show up in the output of `ls`. I don't like auto-archiving because it can change the line numbers of the remaining tasks. This can be confusing because line numbers shown in any previous `ls` output in your terminal session may no longer be correct. For example if you type another `todo.sh do <NUMBER>` command based on a line number that you can still see in the output from a previous `ls` command then you might complete the wrong task. You can disable auto-archiving with with the `-a` argument: `todo.sh -a do <NUMBER>`, or with `export TODOTXT_AUTO_ARCHIVE=0` in your `todo.cfg` file.
 
