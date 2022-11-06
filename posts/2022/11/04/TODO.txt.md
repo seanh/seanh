@@ -338,3 +338,5 @@ I put this in my `vimrc` file to bind <kbd>Leader</kbd> <kbd>t</kbd> to open my 
 ```vimrc
 nnoremap <leader>t :e ~/Dropbox/TODO.txt/todo.txt<Enter>
 ```
+
+There's also a couple of todo.txt plugins for vim but they look like they do a lot more than I'd want: lots of keybindings for editing tasks, sorting, etc. Maybe I'll make a simple vim plugin one day that just does todo.txt syntax highlighting.
