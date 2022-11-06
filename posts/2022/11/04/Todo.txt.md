@@ -1,4 +1,4 @@
-TODO.txt
+Todo.txt
 ========
 
 [Todo.txt](http://todotxt.org/) is a bash script for managing a todo list in a plain text `todo.txt` file:
