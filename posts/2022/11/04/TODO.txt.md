@@ -1,7 +1,29 @@
 TODO.txt
 ========
 
-[Todo.txt](http://todotxt.org/) is a bash script for managing a todo list in a plain text `todo.txt` file. I find that I can never make a todo app stick but todo.txt works because it puts my todo list right at my fingertips very immediately whether I'm in a shell or in vim. If you put the `todo.txt` file in Dropbox then you also get continuous cloud backup and syncing between devices and you can access the `todo.txt` file on your phone using the Dropbox app.
+[Todo.txt](http://todotxt.org/) is a bash script for managing a todo list in a plain text `todo.txt` file:
+
+```console
+$ todo.sh add Go grocery shopping
+1 Go grocery shopping
+TODO: 1 added.
+$ todo.sh add Feed the cat
+2 Feed the cat
+TODO: 2 added.
+$ todo.sh add Feed the dog
+3 Feed the dog
+TODO: 3 added.
+$ todo.sh ls
+1 Go grocery shopping
+2 Feed the cat
+3 Feed the dog
+--
+TODO: 3 of 3 tasks shown
+```
+
+I find that I can never make the habit of using any other todo app stick, but todo.txt works because it puts my todo list right at my fingertips very immediately whether I'm in a shell or in vim (since you can just open the `todo.txt` file and edit it directly).
+
+If you put the `todo.txt` file in Dropbox then you also get continuous cloud backup and syncing between devices and you can read and edit the file on your phone using the Dropbox app.
 
 Todo.txt doesn't give you much that you wouldn't get by just having a `todo.txt` file that you open in a text editor. It just provides a simple file format to follow and a `todo.sh` script with some convenient commands for working with the `todo.txt` file. There are actually desktop and mobile todo.txt apps but I don't use any of those.
 
