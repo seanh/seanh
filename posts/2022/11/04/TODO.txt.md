@@ -1,6 +1,14 @@
 TODO.txt
 ========
 
+[Todo.txt](http://todotxt.org/) is a bash script for managing a todo list in a plain text `todo.txt` file. I find that I can never make a todo app stick but todo.txt works because it puts my todo list right at my fingertips very immediately whether I'm in a shell or in vim. If you put the `todo.txt` file in Dropbox then you also get continuous cloud backup and syncing between devices and you can access the `todo.txt` file on your phone using the Dropbox app.
+
+Todo.txt doesn't give you much that you wouldn't get by just having a `todo.txt` file that you open in a text editor. It just provides a simple file format to follow and a `todo.sh` script with some convenient commands for working with the `todo.txt` file. There are actually desktop and mobile todo.txt apps but I don't use any of those.
+
+There's no due dates or scheduled or recurring reminders, at least not without add-ons. I use the Reminders app on my phone for a lot of life-admin reminders and use that app's scheduled and recurring reminders. I use todo.txt for keeping track of my while-at-the-computer work tasks, and I don't need scheduled or recurring reminders for that.
+
+This post is my quick-start guide to installing, configuring and using todo.txt.
+
 Installation
 ------------
 
