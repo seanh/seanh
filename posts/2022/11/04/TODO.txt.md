@@ -256,7 +256,7 @@ You can add one or more projects (e.g. `+garage_cleaning`) and contexts (the pla
 $ todo.sh add Put away tools +garage_cleaning @home
 ```
 
-`ls` can filter on projects and contexts like any other term, for example: `todo.sh ls +garage_cleaning` or `ls @home`. Or use `-+garage_cleaning` or `-@home` to list only tasks that _don't_ have a project or context.
+`ls` can filter on projects and contexts like any other term, for example: `ls +garage_cleaning` or `ls @home`. Or use `-+garage_cleaning` or `-@home` to list only tasks that _don't_ have a project or context.
 
 `listproj` or `lsprj` lists all the projects in `todo.txt` (not to be confused with `lsp` which lists prioritised tasks). `listcon` or `lsc` lists all contexts.
 
