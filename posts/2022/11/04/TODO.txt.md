@@ -23,7 +23,7 @@ TODO: 3 of 3 tasks shown
 
 I find that I can never make the habit of using any other todo app stick, but todo.txt works because it puts my todo list right at my fingertips very immediately whether I'm in a shell or in vim (since you can just open the `todo.txt` file and edit it directly).
 
-If you put the `todo.txt` file in Dropbox then you also get continuous cloud backup and syncing between devices and you can read and edit the file on your phone. I don't use any particular TODO.txt app on my phone, I just use the Dropbox app's built-in ability to view and edit plain text files.
+If you put the `todo.txt` file in Dropbox then you also get continuous cloud backup and syncing between devices and you can read and edit the file on your phone. I don't use any particular todo.txt app on my phone, I just use the Dropbox app's built-in ability to view and edit plain text files.
 
 Todo.txt doesn't give you much that you wouldn't get by just having a `todo.txt` file that you open in a text editor. It just provides a simple file format to follow and a `todo.sh` script with some convenient commands for working with the `todo.txt` file. There are actually desktop and mobile todo.txt apps but I don't use any of those.
 
