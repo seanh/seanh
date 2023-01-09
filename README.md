@@ -9,7 +9,7 @@ If you want to get in touch you can
 
 ## Recent Posts
 
-* [How to authenticate a GitHub Actions workflow as a GitHub App so it can trigger other workflows?](https://stackoverflow.com/q/74892481/1175266)
+* [How to authenticate a GitHub Actions workflow as a GitHub App so it can trigger other workflows](https://stackoverflow.com/q/74892481/1175266)
 * [My guide to todo.txt](posts/2022/11/04/Todo.txt.md)
 
 <img src="https://github.com/seanh/seanh.github.io/raw/master/assets/images/zenek.png">
