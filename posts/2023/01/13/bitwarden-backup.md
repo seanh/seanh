@@ -1,5 +1,5 @@
-How to Make an Encrypted Backup of Your Bitwarden Vault
-=======================================================
+How to Make Your Own Encrypted Backup of Your Bitwarden Vault
+=============================================================
 
 A quick tutorial for making a [GnuPG](https://gnupg.org/)-encrypted backup of your [Bitwarden](https://bitwarden.com/) vault using
 [pass](https://www.passwordstore.org/).
