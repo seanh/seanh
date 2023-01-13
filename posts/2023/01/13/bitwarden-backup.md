@@ -125,5 +125,5 @@ Here's how I do it:
    PASSWORD_STORE_DIR=/media/seanh/bitwarden_backup/password-store pass show bitwarden
    ```
 
-   To read the backup you need both the backup itself (which I store on an encrypted USB drive) and the GPG key (which is stored in my home dir).
+   To read the backup you need both the backup itself (which I store on an external USB drive) and the GPG key (which is stored in my home dir).
    Just having the USB drive on its own isn't enough to decrypt the backup.
