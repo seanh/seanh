@@ -14,8 +14,8 @@ unencrypted copy of my vault on my local disk. I'd then have to make an encrypte
 Instead I use [Bitwarden CLI](https://bitwarden.com/help/cli/)'s [`export` command](https://bitwarden.com/help/cli/#export) because this can pipe an
 unencrypted JSON export of my vault directly into my own encryption command without the unencrypted vault ever hitting my disk.
 
-I use [pass](https://www.passwordstore.org/) (the standard unix password manager) to encrypt the backup with a GPG key, so I can decrypt the backup
-with that GPG key  independent of Bitwarden. Pass also keeps a backup history in [Git](https://git-scm.com/).
+I use [pass](https://www.passwordstore.org/) (the standard unix password manager) to encrypt the backup with a passphrase-protected GPG key, so I can decrypt the backup
+with that GPG key and passphrase independent of Bitwarden. Pass also keeps a backup history in [Git](https://git-scm.com/).
 
 **This doesn't backup your attached files**. According to [Bitwarden's export docs](https://bitwarden.com/help/export-your-data/) exports don't include
 attachments, the trash, password history, or Sends (from [Bitwarden Send](https://bitwarden.com/products/send/)). Bitwarden CLI does have commands for
