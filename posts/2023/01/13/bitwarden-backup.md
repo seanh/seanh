@@ -1,7 +1,7 @@
 How to Make Your Own Encrypted Backup of Your Bitwarden Vault
 =============================================================
 
-A quick tutorial for making a [GnuPG](https://gnupg.org/)-encrypted backup of your [Bitwarden](https://bitwarden.com/) vault using
+A quick tutorial for making a [GPG](https://gnupg.org/)-encrypted backup of your [Bitwarden](https://bitwarden.com/) vault using
 [pass](https://www.passwordstore.org/).
 
 I don't use Bitwarden's [encrypted export](https://bitwarden.com/help/encrypted-export/) feature because as far as I know those exports are only good for
@@ -24,73 +24,22 @@ listing and getting attachments so it should be possible to back them up but you
 
 Here's how I do it:
 
-1. Install [Bitwarden CLI](https://bitwarden.com/help/cli/).
+1. Install Bitwarden CLI, pass, Git, and GPG
 
-   On Ubuntu:
-
-   ```terminal
-   sudo snap install bw
-   ```
-   
-   On macOS install [Homebrew](https://brew.sh/) then do:
-   
-   ```terminal
-   brew install node
-   npm install -g @bitwarden/cli
-   ```
-   
-2. Install [pass](https://www.passwordstore.org/).
-
-   On Ubuntu:
-
-   ```terminal
-   sudo apt install pass
-   ```
-   
-   On macOS install [Homebrew](https://brew.sh/) then do:
-   
-   ```terminal
-   brew install pass
-   ```
-
-3. Install [Git](https://git-scm.com/).
-
-   On Ubuntu:
-   
-   ```terminal
-   sudo apt install git
-   ```
-   
-   On macOS install [Homebrew](https://brew.sh/) then do:
-   
-   ```terminal
-   brew install git
-   ```
-
-4. Install [GPG](https://gnupg.org/).
-
-   On Ubuntu:
-   
-   ```terminal
-   sudo apt install gpg
-   ```
-   
-   I can't remember how you install GPG on macOS.
-
-5. Create a GPG key:
+2. Create a passphrase-protected GPG key:
 
    ```terminal
    gpg --full-generate-key
    ```
 
-6. Create an encrypted password store with git history on your USB drive:
+3. Create an encrypted password store with git history on your USB drive:
 
    ```terminal
    PASSWORD_STORE_DIR=/media/seanh/bitwarden_backup/password-store pass init <GPG_KEY_ID>
    PASSWORD_STORE_DIR=/media/seanh/bitwarden_backup/password-store pass git init
    ```
 
-7. Log in to Bitwarden CLI and pipe an unencrypted export of your Bitwarden vault directly into `pass`'s GPG-based encryption.
+4. Log in to Bitwarden CLI and pipe an unencrypted export of your Bitwarden vault directly into `pass`'s GPG-based encryption.
    Here's a shell script that I use to do this (replace `YOU@EXAMPLE.COM` with the email address that you use to log in to Bitwarden and
    `/media/seanh/bitwarden_backup/password-store` with the path to your `pass` password store):
 
@@ -119,11 +68,11 @@ Here's how I do it:
    pass show bitwarden | head -n 5
    ```
 
-8. You can decrypt your vault backup and read it with a command like:
+5. You can decrypt your vault backup and read it with a command like:
 
    ```terminal
    PASSWORD_STORE_DIR=/media/seanh/bitwarden_backup/password-store pass show bitwarden
    ```
 
-   To read the backup you need both the backup itself (which I store on an external USB drive) and the GPG key (which is stored in my home dir).
-   Just having the USB drive on its own isn't enough to decrypt the backup.
+   To read the backup you need both the backup itself (which I store on an external USB drive), the GPG key (which is stored in my home dir), and the
+   GPG key's passphrase. Just having the USB drive on its own isn't enough to decrypt the backup.
