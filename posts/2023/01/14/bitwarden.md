@@ -6,15 +6,15 @@ My advice for using [Bitwarden][] safely, securely and reliably.
 Password managers can be secure and convenient but they're also dangerous tools
 in a couple of important ways:
 
-* By encouraging you to put all your passwords and other sensitive information
-  in one place password managers create the possibility of a catastrophic
-  compromise if an attacker gains access to your vault.
-* By enabling you to use a different impossible-to-remember password for every
-  single account, password managers create the possibility of catastrophically
-  locking yourself out of all your accounts at once if you lock yourself out of
-  your password manager. This is especially true if one of the accounts with an
-  un-memorisable, password manager-generated password is the email account where
-  you receive password reset emails for all your other accounts.
+1. By encouraging you to put all your passwords and other sensitive information
+   in one place password managers create the possibility of a catastrophic
+   compromise if an attacker gains access to your vault.
+2. By enabling you to use a different impossible-to-remember password for every
+   single account, password managers create the possibility of catastrophically
+   locking yourself out of all your accounts at once if you lock yourself out of
+   your password manager. This is especially true if one of the accounts with an
+   un-memorisable, password manager-generated password is the email account where
+  y ou receive password reset emails for all your other accounts.
 
 As well as choosing a well-known, reputable password manager that you can trust
 you also need to use your password manager in a careful way that is:
@@ -49,7 +49,7 @@ very strong and words are a lot easier to read from a piece of paper and type
 in.
 
 This master password is going to be impossible to remember and inconvenient to
-type in, so below I'll cover how to avoid having to either.
+type in, so below I'll cover how to avoid doing either.
 
 Print your master password
 --------------------------
