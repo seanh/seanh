@@ -216,7 +216,9 @@ Bitwarden's password generator to create the passwords for all your accounts,
 turn on upper-case letters, numbers and special characters and set the length
 to the password generator's maximum of 128 characters (or the maximum that the
 site will accept, many sites have a maximum password length that's actually
-less than 128).
+less than 128). You want all your passwords to look like this:
+
+    5EsESi$m94nx!QGyCG8y!ky!rE5QTar^cPJX&rQm*FRip!2&C@@9CJw%#FnEC*C9uRi2@5NCUH5NuCmNG#^zwebuyT6b96L4SCT2w^E4PTccUSnS#PjkdZSn5u3eN#HY
 
 Also use 2FA for as many accounts as possible
 ---------------------------------------------
