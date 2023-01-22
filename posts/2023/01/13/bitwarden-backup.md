@@ -44,26 +44,31 @@ Here's how I do it:
    `/media/seanh/bitwarden_backup/password-store` with the path to your `pass` password store):
 
    ```bash
-   #!/usr/bin/env bash
-   set -euo pipefail
+    #!/usr/bin/env bash
+    set -euo pipefail
 
-   if ! bw login --check
-   then
-       BW_SESSION="$(bw login --raw YOU@EXAMPLE.com)"
-       export BW_SESSION
-   fi
+    # Log in to Bitwarden and unlock the vault, if not logged in already.
+    if ! bw login --check
+    then
+        BW_SESSION="$(bw login --raw YOU@EXAMPLE.COM)"
+        trap 'bw lock' 0
+        export BW_SESSION
+    fi
 
-   if ! bw unlock --check
-   then
-       BW_SESSION="$(bw unlock --raw)"
-       export BW_SESSION
-   fi
+    # Unlock the vault, if it's not already unlocked.
+    if ! bw unlock --check
+    then
+        BW_SESSION="$(bw unlock --raw)"
+        trap 'bw lock' 0
+        export BW_SESSION
+    fi
 
-   PASSWORD_STORE_DIR=/media/seanh/bitwarden_backup/password-store
-   export PASSWORD_STORE_DIR
+    # Update the vault.
+    bw sync --force
 
-   bw sync --nointeraction
-   bw export --nointeraction --format json --raw | pass insert --force --multiline bitwarden
+    # Export the vault into the password store.
+    PASSWORD_STORE_DIR=/media/seanh/bitwarden_backup/password-store
+    bw export --format json --raw | pass insert --force --multiline bitwarden
    ```
 
 5. You can decrypt your vault backup and read it with a command like:
