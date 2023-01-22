@@ -64,14 +64,18 @@ Here's how I do it:
 
    bw sync --nointeraction
    bw export --nointeraction --format json --raw | pass insert --force --multiline bitwarden
-   pass git show --no-patch
-   pass show bitwarden | head -n 5
    ```
 
 5. You can decrypt your vault backup and read it with a command like:
 
    ```terminal
    PASSWORD_STORE_DIR=/media/seanh/bitwarden_backup/password-store pass show bitwarden
+   ```
+
+   Or see the history of changes to your backup with:
+
+   ```terminal
+   PASSWORD_STORE_DIR=/media/seanh/bitwarden_backup/password-store pass git log --patch
    ```
 
    To read the backup you need both the backup itself (which I store on an external USB drive), the GPG key (which is stored in my home dir), and the
