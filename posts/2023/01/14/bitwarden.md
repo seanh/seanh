@@ -151,7 +151,7 @@ versions of the vault up and down with the Bitwarden API.
 
 I use the same PIN for all my Bitwarden clients (and also for my offline
 backups, see below). It's a reasonably simple password and I type it often, so
-I'm able to memorise it and don't need to save it or write it down anywhere.
+I'm able to memorise it.
 
 For convenience I set the [vault timeout](https://bitwarden.com/help/vault-timeout/)
 in all of my PIN-locked clients to **4 hours** which is the longest option.
