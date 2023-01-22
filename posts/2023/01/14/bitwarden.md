@@ -233,7 +233,7 @@ Use a third-party 2FA app. Don't use Bitwarden's built-in 2FA support
 Bitwarden vault also gets the 2FA for all your accounts.
 
 Bitwarden [recommend](https://bitwarden.com/help/bitwarden-field-guide-two-step-login/#use-authy)
-using [Authy](https://authy.com/) for your 2FA app because its [encrypted backup feature](https://authy.com/blog/how-the-authy-two-factor-backups-work/)
+using [Authy](https://authy.com/) for your 2FA app for its [encrypted backup feature](https://authy.com/blog/how-the-authy-two-factor-backups-work/)
 protects you against losing your 2FA app.
 
 Since losing your second factor can lock you out of your account you should
