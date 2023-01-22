@@ -9,6 +9,7 @@ If you want to get in touch you can
 
 ## Recent Posts
 
+* [How I Use Bitwarden](posts/2023/01/14/bitwarden.md)
 * [How to Make Your Own Encrypted Backup of Your Bitwarden Vault](posts/2023/01/13/bitwarden-backup.md)
 * [How to authenticate a GitHub Actions workflow as a GitHub App so it can trigger other workflows](https://stackoverflow.com/q/74892481/1175266)
 * [My guide to todo.txt](posts/2022/11/04/Todo.txt.md)
