@@ -6,12 +6,3 @@ You can also find me on [GitHub Gist](https://gist.github.com/seanh/public), [St
 and [Pinboard](https://pinboard.in/u:seanh).
 If you want to get in touch you can
 [send me an email](&#109;ai&#x6C;&#x74;&#x6F;:&#x68;&#x65;&#108;&#108;o&#64;&#115;&#x65;a&#110;h&#46;&#99;&#x63;).
-
-## Recent Posts
-
-* [How I Use Bitwarden](posts/2023/01/14/bitwarden.md)
-* [How to Make Your Own Encrypted Backup of Your Bitwarden Vault](posts/2023/01/13/bitwarden-backup.md)
-* [How to authenticate a GitHub Actions workflow as a GitHub App so it can trigger other workflows](https://stackoverflow.com/q/74892481/1175266)
-* [My guide to todo.txt](posts/2022/11/04/Todo.txt.md)
-
-<img src="https://github.com/seanh/seanh.github.io/raw/master/assets/images/zenek.png">
